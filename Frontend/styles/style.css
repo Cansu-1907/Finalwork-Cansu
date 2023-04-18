@@ -1,0 +1,211 @@
+/*     CUSTOM PROPERTIES       */
+
+:root {
+  /* colors */
+  --color-white: #ffffff;
+  --color-dark-blue: #0d042b;
+  --color-light-blue: #66b4d8;
+  --color-green: #227c26;
+  --color-yellow: #e5b64e;
+  --color-red: #e34242;
+  --color-trophy-blue: #3f92c2;
+  --color-trophy-green: #0f5311;
+  --color-trophy-yellow: #d6942b;
+  --color-trophy-red: #d32323;
+
+  /* font family */
+  --font-family-h1: Crayone;
+  --font-family-p: Lato Regular;
+  --font-family-nav-a: Crayone;
+  --font-family-gallery-flashcard-p: Lato Bold;
+  --font-family-category-flashcard-h2: Lato Bold;
+  --font-family-category-flashcard-p: Lato Bold;
+  --font-family-category-option-p: Lato Regular;
+  --font-family-achievement-h2: Lato Bold;
+  --font-family-achievement-p: Lato Regular;
+  --font-family-form-h1: Lato Bold;
+  --font-family-form-input: Lato Regular;
+  --font-family-form-button: Lato Regular;
+  --font-family-form-p: Lato Regular;
+
+  /* font size */
+  --font-size-h1: 70px;
+  --font-size-p: 25px;
+  --font-size-nav-a: 35px;
+  --font-size-gallery-flashcard-p: 25px;
+  --font-size-category-flashcard-h2: 45px;
+  --font-size-category-flashcard-p: 32px;
+  --font-size-category-option-p: 25px;
+  --font-size-achievement-h2: 25px;
+  --font-size-achievement-p: 18px;
+  --font-size-form-h1: 45px;
+  --font-size-form-input: 20px;
+  --font-size-form-button: 25px;
+  --font-size-form-p: 25px;
+  --font-size-welcome: 50px;
+}
+
+/*      FONTS       */
+
+@font-face {
+  font-family: "Crayone";
+  src: url("../fonts/Crayone.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato Regular";
+  src: url("../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato Bold";
+  src: url("../fonts/Lato-Bold.ttf");
+}
+
+/*      GENERAL       */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: var(--font-family-h1);
+  font-size: var(--font-size-h1);
+  font-weight: 400;
+  color: var(--color-dark-blue);
+}
+
+p {
+  font-family: var(--font-family-p);
+  font-size: var(--font-size-p);
+  line-height: 1.4;
+}
+
+nav a {
+  font-family: var(--font-family-nav-a);
+  font-size: var(--font-size-nav-a);
+  font-weight: 500;
+}
+
+button {
+  font-family: var(--font-family-form-button);
+  font-size: var(--font-size-form-button);
+  padding: 15px 50px;
+  border: none;
+  color: var(--color-white);
+  background-color: var(--color-light-blue);
+  cursor: pointer;
+}
+
+/*      NAVIGATION       */
+
+nav {
+  background-color: var(--color-dark-blue);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* padding: 0 5% 10px 5%; */
+  padding: 0 7%;
+  height: 75px;
+}
+
+nav #nav-logo-container {
+  width: 30%;
+  /* display: flex;
+  align-items: center; */
+}
+
+nav #nav-logo-container svg {
+  width: 180px;
+  cursor: pointer;
+}
+
+nav #nav-items-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav #nav-items-container span {
+  color: var(--color-white);
+  font-size: 45px;
+  cursor: pointer;
+}
+
+#account-button-a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item-1 {
+  color: var(--color-light-blue);
+}
+
+.nav-item-2 {
+  color: var(--color-yellow);
+}
+
+.nav-item-3 {
+  color: var(--color-red);
+}
+
+.nav-item-4 {
+  color: var(--color-green);
+}
+
+#home-header-container {
+  background-image: url(../images/home-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: calc(100vh - 75px);
+}
+
+/*      HOME HEADER       */
+
+#home-header-container {
+  display: flex;
+  align-items: center;
+  padding-left: 7%;
+}
+
+#home-header-information-container {
+  width: 35%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#home-header-information-container p,
+#home-header-information-container h1 {
+  color: var(--color-white);
+}
+
+#home-header-information-container button {
+  background-color: var(--color-yellow);
+  margin-top: 25px;
+}
+
+#home-header-information-container #home-header-welcome {
+  color: var(--color-yellow);
+  font-size: var(--font-size-welcome);
+  margin-bottom: -15px;
+}
+
+#home-header-welcome-container {
+  display: flex;
+  flex-direction: column;
+}
