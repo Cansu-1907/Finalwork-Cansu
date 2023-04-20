@@ -95,6 +95,21 @@ nav a {
   font-weight: 500;
 }
 
+input,
+input::placeholder {
+  font-family: var(--font-family-form-input);
+  font-size: var(--font-size-form-input);
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background-color: #ececec;
+  padding: 8px 10px;
+  border: none;
+}
+
 button {
   font-family: var(--font-family-form-button);
   font-size: var(--font-size-form-button);
@@ -208,4 +223,93 @@ nav #nav-items-container span {
 #home-header-welcome-container {
   display: flex;
   flex-direction: column;
+}
+
+/*      LOGIN / SIGN       */
+
+#login-main-container,
+#sign-main-container {
+  width: 100vw;
+  height: calc(100vh - 75px);
+  display: flex;
+  align-items: center;
+}
+
+#login-image-container,
+#sign-image-container {
+  width: 60%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#login-image-container {
+  background-image: url(../images/log-in.jpg);
+}
+
+#sign-image-container {
+  background-image: url(../images/sign-up.jpg);
+}
+
+#login-form-container,
+#sign-form-container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: -3px 0px 17px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px 0px 17px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: -3px 0px 17px -8px rgba(0, 0, 0, 0.75);
+}
+
+#login-form-container form,
+#sign-form-container form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 90px;
+  width: 60%;
+}
+
+#login-form-container form div,
+#sign-form-container form div {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  row-gap: 20px;
+}
+
+#login-form-container p,
+#sign-form-container p {
+  font-family: var(--font-family-form-p);
+  font-size: var(--font-size-form-p);
+}
+
+#login-form-container a,
+#sign-form-container a {
+  color: black;
+  text-decoration: underline;
+}
+
+#login-form-container h1,
+#sign-form-container h1 {
+  font-family: var(--font-family-form-h1);
+  font-size: var(--font-size-form-h1);
+}
+
+#login-form-container h1 {
+  color: var(--color-green);
+}
+
+#sign-form-container h1 {
+  color: var(--color-light-blue);
+}
+
+#login-form-container button {
+  background-color: var(--color-green);
+}
+
+#sign-form-container button {
+  background-color: var(--color-light-blue);
 }
