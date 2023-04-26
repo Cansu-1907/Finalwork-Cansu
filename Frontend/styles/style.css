@@ -497,3 +497,112 @@ nav #nav-items-container span {
   background-color: var(--color-white);
   z-index: 9999;
 }
+
+/*      CATEGORIES       */
+
+#categories-main-container {
+  padding: 100px 7% 40px 7%;
+}
+
+#categories-h1-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#categories-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+}
+
+.category-container {
+  border: 5px solid var(--color-red);
+  cursor: pointer;
+  -webkit-box-shadow: 5px 5px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 16px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 5px 16px -4px rgba(0, 0, 0, 0.75);
+}
+
+.category-h2-container {
+  background-color: var(--color-red);
+  padding: 15px 50px;
+}
+
+.category-h2-container h2 {
+  color: var(--color-white);
+  font-family: var(--font-family-category-flashcard-h2);
+  font-size: var(--font-size-category-flashcard-h2);
+}
+
+.category-items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 50px;
+}
+
+.category-item a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.category-item img {
+  width: 100%;
+  filter: brightness(50%);
+  vertical-align: middle;
+}
+
+.category-item p {
+  position: absolute;
+  color: var(--color-white);
+  font-family: var(--font-family-category-flashcard-p);
+  font-size: var(--font-size-category-flashcard-p);
+}
+
+/*      TUTORIAL     */
+
+#tutorial-main-container {
+  padding: 100px 7% 40px 7%;
+}
+
+#tutorial-h1-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#tutorial-information-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  column-gap: 30px;
+}
+
+#tutorial-video-container {
+  width: 50%;
+}
+
+#tutorial-video-container video {
+  width: 100%;
+}
+
+#tutorial-canvas-container {
+  width: 800px;
+  height: auto;
+}
+
+#tutorial-canvas-container img {
+  width: 100%;
+}
+
+#tutorial-footer {
+  margin-top: 70px;
+}
