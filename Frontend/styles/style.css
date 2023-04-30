@@ -731,3 +731,106 @@ input:checked + .slider:before {
   font-size: 30px;
   cursor: pointer;
 }
+
+/*      ACHIEVEMENTS       */
+
+#achievements-main-container {
+  padding: 100px 7% 40px 7%;
+}
+
+#achievements-h1-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#achievements-items-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.achievements-grid-item {
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid var(--color-dark-blue);
+}
+
+.achievements-grid-item-img-container {
+  width: 100px;
+}
+
+.achievements-grid-item-done-container {
+  width: 50px;
+}
+.achievements-grid-item-img-container img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.achievements-grid-item-done-container img {
+  width: 100%;
+}
+
+.achievements-grid-item-information-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  width: calc(100% - 100px);
+}
+
+.achievements-grid-item-information-subcontainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.achievements-grid-item-information-subcontainer h2 {
+  font-family: var(--font-family-achievement-h2);
+  font-size: var(--font-size-achievement-h2);
+  color: var(--color-white);
+}
+
+.achievements-grid-item-information-subcontainer p {
+  font-family: var(--font-family-achievement-p);
+  font-size: var(--font-size-achievement-p);
+  color: var(--color-white);
+}
+
+.blue-achievement {
+  background-color: var(--color-light-blue);
+}
+
+.green-achievement {
+  background-color: var(--color-green);
+}
+
+.yellow-achievement {
+  background-color: var(--color-yellow);
+}
+
+.red-achievement {
+  background-color: var(--color-red);
+}
+
+.blue-achievement-trophy {
+  background-color: var(--color-trophy-blue);
+}
+
+.green-achievement-trophy {
+  background-color: var(--color-trophy-green);
+}
+
+.yellow-achievement-trophy {
+  background-color: var(--color-trophy-yellow);
+}
+
+.red-achievement-trophy {
+  background-color: var(--color-trophy-red);
+}
+
+#achievements-footer {
+  margin-top: 60px;
+}
