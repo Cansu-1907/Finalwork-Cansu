@@ -1039,3 +1039,73 @@ nav #nav-items-container-admin span {
   flex-direction: column;
   row-gap: 7px;
 }
+
+/*      ACHIEVEMENTS ADMIN     */
+
+#achievements-admin-main {
+  padding: 100px 7% 40px 7%;
+}
+
+#achievements-admin-main button {
+  background-color: var(--color-green);
+}
+
+#achievements-admin-main #achievements-items-container {
+  margin-top: 50px;
+}
+
+.achievements-grid-item-done-container span {
+  color: var(--color-white);
+  font-size: var(--font-size-category-flashcard-h2);
+  cursor: pointer;
+}
+
+#achievements-admin-main .achievements-grid-item-information-container {
+  padding: 0 20px 0 40px;
+}
+
+.admin-achievement-option-container {
+  background-color: var(--color-white);
+  padding: 20px;
+  border: 2px solid var(--color-dark-blue);
+  position: absolute;
+  z-index: 5;
+}
+
+.admin-achievement-option-container p {
+  font-size: var(--font-size-admin-category-options-p);
+  font-family: var(--font-family-admin-category-options-p);
+  cursor: pointer;
+}
+
+#admin-achievement-popup .form .cancel-button {
+  background-color: var(--color-green);
+}
+
+#admin-achievement-popup .form .delete-button {
+  background-color: var(--color-red);
+}
+
+#admin-achievement-popup .form #delete-h1 {
+  color: var(--color-red);
+}
+
+#admin-achievement-popup .form .add-tutorial-button {
+  background-color: var(--color-green);
+}
+
+#admin-achievement-popup .form #add-tutorial-h1 {
+  color: var(--color-green);
+}
+
+#add-achievement-input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+select {
+  background-color: #ececec;
+  padding: 8px 10px;
+  border: none;
+}
