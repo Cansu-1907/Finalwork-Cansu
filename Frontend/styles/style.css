@@ -27,6 +27,7 @@
   --font-family-form-input: Lato Regular;
   --font-family-form-button: Lato Regular;
   --font-family-form-p: Lato Regular;
+  --font-family-admin-category-options-p: Lato Regular;
 
   /* font size */
   --font-size-h1: 70px;
@@ -43,6 +44,7 @@
   --font-size-form-button: 25px;
   --font-size-form-p: 25px;
   --font-size-welcome: 50px;
+  --font-size-admin-category-options-p: 18px;
 }
 
 /*      FONTS       */
@@ -833,4 +835,207 @@ input:checked + .slider:before {
 
 #achievements-footer {
   margin-top: 60px;
+}
+
+/*      LOGIN ADMIN     */
+
+#login-admin-main {
+  background-color: var(--color-dark-blue);
+  width: 100vw;
+  height: 100vh;
+}
+
+#login-admin-form-container {
+  width: auto;
+  height: auto;
+  padding: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  z-index: 9999;
+}
+
+#login-admin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  row-gap: 50px;
+}
+
+#login-admin-input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+#login-admin-form input[type="text"],
+#login-admin-form input[type="password"] {
+  width: 500px;
+}
+
+#login-admin-form h1 {
+  font-family: var(--font-family-form-h1);
+  font-size: var(--font-size-form-h1);
+  color: var(--color-green);
+}
+
+#login-admin-form button {
+  background-color: var(--color-green);
+}
+
+/*      CATEGORIES ADMIN     */
+
+#categories-admin-main {
+  padding: 100px 7% 40px 7%;
+}
+
+#categories-admin-main button {
+  background-color: var(--color-green);
+}
+
+nav #nav-items-container-admin {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav #nav-items-container-admin span {
+  color: var(--color-white);
+  font-size: 45px;
+  cursor: pointer;
+}
+
+#admin-categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 50px;
+}
+
+#admin-categories-container .category-container {
+  width: calc(50% - 25px);
+}
+
+#admin-categories-container .category-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+#admin-categories-container .category-items-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 50px;
+}
+
+#admin-categories-container .category-item p {
+  margin-top: -25px;
+}
+
+.admin-category-options {
+  /* position: absolute; */
+  background-color: var(--color-dark-blue);
+  width: 100%;
+  height: 45px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-category-options hr {
+  height: 25px;
+}
+
+.admin-category-options span {
+  color: var(--color-white);
+  font-size: 28px;
+}
+
+#admin-categories-container .category-h2-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 15px 50px;
+}
+
+#admin-categories-container .category-h2-container span {
+  color: var(--color-white);
+  font-size: var(--font-size-category-flashcard-h2);
+}
+
+.admin-category-option-container {
+  background-color: var(--color-white);
+  padding: 20px;
+  border: 2px solid var(--color-dark-blue);
+  position: absolute;
+  z-index: 5;
+}
+
+.admin-category-option-container p {
+  font-size: var(--font-size-admin-category-options-p);
+  font-family: var(--font-family-admin-category-options-p);
+}
+
+.admin-category-option-container hr {
+  border: 0.5px solid var(--color-dark-blue);
+  margin: 10px 0;
+}
+
+.admin-category-option-upper-subcontainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+#admin-category-popup .form h1 {
+  color: var(--color-yellow);
+}
+
+#admin-category-popup .form button {
+  background-color: var(--color-yellow);
+}
+
+#admin-category-popup .form .cancel-button {
+  background-color: var(--color-green);
+}
+
+#admin-category-popup .form .delete-button {
+  background-color: var(--color-red);
+}
+
+#admin-category-popup .form #delete-h1 {
+  color: var(--color-red);
+}
+
+#admin-category-popup .form .add-tutorial-button {
+  background-color: var(--color-green);
+}
+
+#admin-category-popup .form #add-tutorial-h1 {
+  color: var(--color-green);
+}
+
+#add-tutorial-form label {
+  font-size: 24px;
+  font-family: var(--font-family-form-p);
+}
+
+#add-tutorial-input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+#add-tutorial-input-container div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
 }
