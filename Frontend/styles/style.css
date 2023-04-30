@@ -30,20 +30,20 @@
   --font-family-admin-category-options-p: Lato Regular;
 
   /* font size */
-  --font-size-h1: 70px;
-  --font-size-p: 25px;
+  --font-size-h1: 58px;
+  --font-size-p: 22px;
   --font-size-nav-a: 35px;
-  --font-size-gallery-flashcard-p: 25px;
-  --font-size-category-flashcard-h2: 45px;
-  --font-size-category-flashcard-p: 32px;
+  --font-size-gallery-flashcard-p: 22px;
+  --font-size-category-flashcard-h2: 36px;
+  --font-size-category-flashcard-p: 26px;
   --font-size-category-option-p: 25px;
   --font-size-achievement-h2: 25px;
   --font-size-achievement-p: 18px;
   --font-size-form-h1: 45px;
   --font-size-form-input: 20px;
   --font-size-form-button: 25px;
-  --font-size-form-p: 25px;
-  --font-size-welcome: 50px;
+  --font-size-form-p: 20px;
+  --font-size-welcome: 42px;
   --font-size-admin-category-options-p: 18px;
 }
 
@@ -342,6 +342,7 @@ nav #nav-items-container span {
   border: 3px solid var(--color-green);
   border-top: none;
   cursor: none;
+  height: 100%;
 }
 
 #canvas-container {
@@ -351,7 +352,7 @@ nav #nav-items-container span {
 
 #canvas-wrapper {
   width: 100%;
-  /* height: 562px; */
+  height: 562px;
 }
 
 #canvas-options {
@@ -531,7 +532,7 @@ nav #nav-items-container span {
 
 .category-h2-container {
   background-color: var(--color-red);
-  padding: 15px 50px;
+  padding: 15px 25px;
 }
 
 .category-h2-container h2 {
@@ -544,7 +545,7 @@ nav #nav-items-container span {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 15px;
-  padding: 50px;
+  padding: 25px;
 }
 
 .category-item a {
@@ -599,6 +600,10 @@ nav #nav-items-container span {
 #tutorial-canvas-container {
   width: 800px;
   height: auto;
+}
+
+#tutorial-canvas-container #canvas-wrapper {
+  height: 450px;
 }
 
 #tutorial-canvas-container img {
@@ -932,7 +937,7 @@ nav #nav-items-container-admin span {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  padding: 50px;
+  padding: 25px;
 }
 
 #admin-categories-container .category-item p {
@@ -963,7 +968,7 @@ nav #nav-items-container-admin span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px 15px 50px;
+  padding: 15px 15px 15px 25px;
 }
 
 #admin-categories-container .category-h2-container span {
@@ -1108,4 +1113,137 @@ select {
   background-color: #ececec;
   padding: 8px 10px;
   border: none;
+}
+
+/*      RESPONSIVE     */
+
+@media screen and (max-width: 1440px) {
+  :root {
+    /* font size */
+    --font-size-h1: 50px;
+    --font-size-p: 20px;
+    --font-size-nav-a: 26px;
+    --font-size-gallery-flashcard-p: 22px;
+    --font-size-category-flashcard-h2: 32px;
+    --font-size-category-flashcard-p: 26px;
+    --font-size-category-option-p: 25px;
+    --font-size-achievement-h2: 25px;
+    --font-size-achievement-p: 18px;
+    --font-size-form-h1: 45px;
+    --font-size-form-input: 20px;
+    --font-size-form-button: 22px;
+    --font-size-form-p: 20px;
+    --font-size-welcome: 36px;
+    --font-size-admin-category-options-p: 18px;
+  }
+
+  nav #nav-items-container {
+    width: 55%;
+  }
+
+  #home-header-information-container {
+    height: 450px;
+  }
+
+  #draw-main-container,
+  #categories-main-container,
+  #categories-admin-main,
+  #gallery-main-container,
+  #achievements-main-container,
+  #tutorial-main-container,
+  #achievements-admin-main {
+    padding: 75px 7% 40px 7%;
+  }
+
+  #login-form-container form,
+  #sign-form-container form {
+    row-gap: 60px;
+  }
+
+  #canvas-container {
+    width: 800px;
+  }
+
+  #canvas-wrapper {
+    height: 450px;
+  }
+
+  #tutorial-canvas-container {
+    width: 600px;
+  }
+
+  #tutorial-canvas-container #canvas-wrapper {
+    height: 337px;
+  }
+
+  .admin-category-option-container,
+  .admin-achievement-option-container {
+    margin-left: -144px;
+  }
+
+  #admin-categories-container .category-items-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-category-options {
+    padding: 0 50px;
+  }
+
+  #add-tutorial-form label {
+    font-size: 22px;
+  }
+
+  nav #nav-items-container-admin {
+    width: 35%;
+  }
+
+  #achievements-footer {
+    margin-top: 0;
+  }
+
+  #categories-container {
+    row-gap: 60px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+    /* font size */
+    --font-size-h1: 50px;
+    --font-size-p: 18px;
+    --font-size-nav-a: 24px;
+    --font-size-gallery-flashcard-p: 22px;
+    --font-size-category-flashcard-h2: 32px;
+    --font-size-category-flashcard-p: 26px;
+    --font-size-category-option-p: 25px;
+    --font-size-achievement-h2: 25px;
+    --font-size-achievement-p: 18px;
+    --font-size-form-h1: 45px;
+    --font-size-form-input: 20px;
+    --font-size-form-button: 22px;
+    --font-size-form-p: 20px;
+    --font-size-welcome: 36px;
+    --font-size-admin-category-options-p: 18px;
+  }
+
+  #gallery-items-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #home-header-information-container {
+    height: 400px;
+  }
+
+  #draw-main-container,
+  #categories-main-container,
+  #categories-admin-main,
+  #gallery-main-container,
+  #achievements-main-container,
+  #tutorial-main-container,
+  #achievements-admin-main {
+    padding: 50px 7% 40px 7%;
+  }
+
+  .admin-category-options {
+    padding: 0 45px;
+  }
 }

@@ -1,4 +1,4 @@
-export default function canvas(height) {
+export default function canvas() {
   // get canvas element and 2d context
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -24,13 +24,21 @@ export default function canvas(height) {
     cursor.style.backgroundColor = colorPicker.value;
   });
 
-  const newWidth =
-    parseInt(
-      window.getComputedStyle(canvasContainer).getPropertyValue("width")
-    ) - 6;
-  ctx.canvas.setAttribute("width", `${newWidth}px`);
+  // const newWidth =
+  //   parseInt(
+  //     window.getComputedStyle(canvasContainer).getPropertyValue("width")
+  //   ) - 6;
+  // ctx.canvas.setAttribute("width", `${newWidth}px`);
 
-  ctx.canvas.setAttribute("height", height);
+  ctx.canvas.setAttribute(
+    "width",
+    window.getComputedStyle(canvasContainer).getPropertyValue("width")
+  );
+
+  ctx.canvas.setAttribute(
+    "height",
+    window.getComputedStyle(canvasContainer).getPropertyValue("height")
+  );
 
   // set initial brush color and size
   let brushColor = "#000000";
