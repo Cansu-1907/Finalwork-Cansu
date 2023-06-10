@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/style.css" />
+    <script defer src="./scripts/index.js" type="module"></script>
     <title>Draw-It</title>
   </head>
   <body>
@@ -83,14 +84,24 @@
         </svg>
       </div>
       <div id="nav-items-container">
-        <a href="./pages/draw.html" class="nav-item-1">DRAW</a>
-        <a href="./pages/categories.html" class="nav-item-2">CATEGORIES</a>
-        <a href="./pages/gallery.html" class="nav-item-3">GALLERY</a>
-        <a href="./pages/achievements.html" class="nav-item-4">ACHIEVEMENTS</a>
-        <a id="account-button-a" href="./pages/login.html"
-          ><span class="material-icons" id="account-button">
-            account_circle
-          </span>
+        <a href="./pages/draw.html" class="nav-item-1" id="draw-link">DRAW</a>
+        <a
+          href="./pages/categories.html"
+          class="nav-item-2"
+          id="categories-link"
+          >CATEGORIES</a
+        >
+        <a href="./pages/gallery.html" class="nav-item-3" id="gallery-link"
+          >GALLERY</a
+        >
+        <a
+          href="./pages/achievements.html"
+          class="nav-item-4"
+          id="achievements-link"
+          >ACHIEVEMENTS</a
+        >
+        <a id="account-button-a" href="./pages/login.html">
+          <span class="material-icons" id="account-button">account_circle</span>
         </a>
       </div>
     </nav>

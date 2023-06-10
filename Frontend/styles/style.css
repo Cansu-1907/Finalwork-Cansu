@@ -329,6 +329,13 @@ nav #nav-items-container span {
   background-color: var(--color-light-blue);
 }
 
+#logout-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 40px !important;
+}
+
 /*      CANVAS     */
 
 #draw-main-container {
@@ -431,7 +438,8 @@ nav #nav-items-container span {
 #eraser,
 #undo,
 #delete,
-#save {
+#save,
+#save-to-device {
   font-size: 36px;
   color: var(--color-white);
 }
@@ -1045,6 +1053,16 @@ nav #nav-items-container-admin span {
   row-gap: 7px;
 }
 
+#logout-btn {
+  background-color: var(--color-dark-blue);
+  padding: 0;
+  font-size: 45px;
+}
+
+#logout-btn span {
+  margin-top: 10px;
+}
+
 /*      ACHIEVEMENTS ADMIN     */
 
 #achievements-admin-main {
@@ -1113,6 +1131,28 @@ select {
   background-color: #ececec;
   padding: 8px 10px;
   border: none;
+}
+
+/*      UNAUTHORIZED     */
+
+#unauthorized-main {
+  background-color: var(--color-dark-blue);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#unauthorized-main h1,
+a {
+  color: var(--color-white);
+}
+
+#unauthorized-main button {
+  background-color: var(--color-yellow);
 }
 
 /*      RESPONSIVE     */

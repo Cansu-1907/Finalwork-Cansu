@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
+    <script defer src="../scripts/login.js" type="module"></script>
     <title>Draw-It</title>
   </head>
   <body>
@@ -86,9 +87,15 @@
       </div>
       <div id="nav-items-container">
         <a href="./draw.html" class="nav-item-1">DRAW</a>
-        <a href="./categories.html" class="nav-item-2">CATEGORIES</a>
-        <a href="./gallery.html" class="nav-item-3">GALLERY</a>
-        <a href="./achievements.html" class="nav-item-4">ACHIEVEMENTS</a>
+        <a href="./categories.html" class="nav-item-2" id="categories-link"
+          >CATEGORIES</a
+        >
+        <a href="./gallery.html" class="nav-item-3" id="gallery-link"
+          >GALLERY</a
+        >
+        <a href="./achievements.html" class="nav-item-4" id="achievements-link"
+          >ACHIEVEMENTS</a
+        >
         <a id="account-button-a" href="./login.html"
           ><span class="material-icons" id="account-button">
             account_circle
@@ -99,16 +106,30 @@
     <main id="login-main-container">
       <div id="login-image-container"></div>
       <div id="login-form-container">
-        <form>
+        <form id="login-form">
           <h1>Log In</h1>
           <div>
-            <input type="email" required placeholder="Email" />
-            <input type="password" required placeholder="Password" />
+            <input
+              type="email"
+              name="login-email"
+              required
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              name="login-password"
+              required
+              placeholder="Password"
+            />
           </div>
           <div>
-            <button>Log In</button>
+            <button type="submit">Log In</button>
             <p>Don't have an account? <a href="./sign.html">Sign Up</a></p>
           </div>
+        </form>
+        <form id="logout-form">
+          <h1 id="logged-user">Logged user here</h1>
+          <button type="submit">Log Out</button>
         </form>
       </div>
     </main>

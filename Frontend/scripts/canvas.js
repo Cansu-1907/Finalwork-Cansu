@@ -1,4 +1,4 @@
-export default function canvas() {
+export default function canvas(usage) {
   // get canvas element and 2d context
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -99,47 +99,81 @@ export default function canvas() {
     undoStack.length = 0;
   });
 
-  // set up save functionality
-  const saveButton = document.getElementById("save");
-  const popupBackground = document.getElementById("popup-background");
-  const popup = document.getElementById("popup");
+  if (usage == "drawPage") {
+    // set up save to device functionality
+    const saveToDeviceButton = document.getElementById("save-to-device");
 
-  saveButton.addEventListener("click", () => {
-    popupBackground.style.display = "block";
-    popup.style.display = "block";
-    const newCanvas = document.createElement("canvas");
-    newCanvas.width = canvas.width;
-    newCanvas.height = canvas.height;
-    const newCtx = newCanvas.getContext("2d");
+    saveToDeviceButton.addEventListener("click", () => {
+      const newCanvas = document.createElement("canvas");
+      newCanvas.width = canvas.width;
+      newCanvas.height = canvas.height;
+      const newCtx = newCanvas.getContext("2d");
 
-    // Set background color here
-    newCtx.fillStyle = "#FFFFFF";
-    newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+      // Set background color here
+      newCtx.fillStyle = "#FFFFFF";
+      newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-    newCtx.drawImage(canvas, 0, 0);
-    const image = newCanvas.toDataURL("image/jpeg");
-    window.sessionStorage.setItem("drawing", image);
+      newCtx.drawImage(canvas, 0, 0);
+      const image = newCanvas.toDataURL("image/jpeg");
 
-    // send the image data to the backend server
-    // fetch("https://example.com/save-image", {
-    //   method: "POST",
-    //   body: JSON.stringify({ image }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Failed to save image");
-    //     }
-    //     alert("Image saved successfully");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     alert("Failed to save image");
-    //   });
-    console.log(image);
-  });
+      const shouldDownload = confirm("Do you want to download the image?");
+      if (shouldDownload) {
+        // Create a temporary link element
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "image.jpg";
+        link.target = "_blank";
+
+        // Programmatically click the link to trigger the download
+        link.click();
+
+        // Clean up by removing the temporary link element
+        link.remove();
+      }
+    });
+  } else if (usage == "tutorialPage") {
+    // set up save functionality
+    const saveButton = document.getElementById("save");
+    const popupBackground = document.getElementById("popup-background");
+    const popup = document.getElementById("popup");
+
+    saveButton.addEventListener("click", () => {
+      popupBackground.style.display = "block";
+      popup.style.display = "block";
+      const newCanvas = document.createElement("canvas");
+      newCanvas.width = canvas.width;
+      newCanvas.height = canvas.height;
+      const newCtx = newCanvas.getContext("2d");
+
+      // Set background color here
+      newCtx.fillStyle = "#FFFFFF";
+      newCtx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+      newCtx.drawImage(canvas, 0, 0);
+      const image = newCanvas.toDataURL("image/jpeg");
+      window.sessionStorage.setItem("drawing", image);
+
+      // send the image data to the backend server
+      // fetch("https://example.com/save-image", {
+      //   method: "POST",
+      //   body: JSON.stringify({ image }),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Failed to save image");
+      //     }
+      //     alert("Image saved successfully");
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //     alert("Failed to save image");
+      //   });
+      console.log(image);
+    });
+  }
 
   const drawingSaveForm = document.getElementById("drawing-save-form");
   drawingSaveForm.addEventListener("submit", (e) => {

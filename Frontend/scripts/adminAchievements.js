@@ -1,3 +1,12 @@
+import logout from "./logout.js";
+import { isAuthenticated, hasRole } from "./authHelpers.js";
+
+if (isAuthenticated() && hasRole("Admin")) {
+  console.log("logged");
+} else {
+  window.location.href = "http://127.0.0.1:5500/pages/unauthorized.html";
+}
+
 const adminAchievementOptionButtons = document.querySelectorAll(
   ".admin-achievement-option-buttons"
 );
@@ -19,6 +28,9 @@ const adminAchievementPopup = document.getElementById(
 );
 
 const popupBackground = document.getElementById("popup-background");
+
+const adminLogoutForm = document.getElementById("admin-logout-form");
+logout(adminLogoutForm);
 
 popupBackground.addEventListener("click", (e) => {
   e.preventDefault();

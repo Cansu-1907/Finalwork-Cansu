@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/style.css" />
+    <script defer src="../scripts/sign.js" type="module"></script>
     <title>Draw-It</title>
   </head>
   <body>
@@ -86,9 +87,15 @@
       </div>
       <div id="nav-items-container">
         <a href="./draw.html" class="nav-item-1">DRAW</a>
-        <a href="./categories.html" class="nav-item-2">CATEGORIES</a>
-        <a href="./gallery.html" class="nav-item-3">GALLERY</a>
-        <a href="./achievements.html" class="nav-item-4">ACHIEVEMENTS</a>
+        <a href="./categories.html" class="nav-item-2" id="categories-link"
+          >CATEGORIES</a
+        >
+        <a href="./gallery.html" class="nav-item-3" id="gallery-link"
+          >GALLERY</a
+        >
+        <a href="./achievements.html" class="nav-item-4" id="achievements-link"
+          >ACHIEVEMENTS</a
+        >
         <a id="account-button-a" href="./login.html"
           ><span class="material-icons" id="account-button">
             account_circle
@@ -99,16 +106,36 @@
     <main id="sign-main-container">
       <div id="sign-image-container"></div>
       <div id="sign-form-container">
-        <form>
+        <form id="sign-form">
           <h1>Sign Up</h1>
           <div>
-            <input type="text" required placeholder="First name" />
-            <input type="text" required placeholder="Last name" />
-            <input type="email" required placeholder="Email" />
-            <input type="password" required placeholder="Password" />
+            <input
+              type="text"
+              name="sign-first-name"
+              required
+              placeholder="First name"
+            />
+            <input
+              type="text"
+              name="sign-last-name"
+              required
+              placeholder="Last name"
+            />
+            <input
+              type="email"
+              name="sign-email"
+              required
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              name="sign-password"
+              required
+              placeholder="Password"
+            />
           </div>
           <div>
-            <button>Sign Up</button>
+            <button type="submit">Sign Up</button>
             <p>Already have an account? <a href="./login.html">Log In</a></p>
           </div>
         </form>

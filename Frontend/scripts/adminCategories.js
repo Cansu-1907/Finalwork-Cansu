@@ -1,3 +1,12 @@
+import logout from "./logout.js";
+import { isAuthenticated, hasRole } from "./authHelpers.js";
+
+if (isAuthenticated() && hasRole("Admin")) {
+  console.log("logged");
+} else {
+  window.location.href = "http://127.0.0.1:5500/pages/unauthorized.html";
+}
+
 const adminCategoryOptionButtons = document.querySelectorAll(
   ".admin-category-option-buttons"
 );
@@ -33,6 +42,9 @@ const adminDeleteTutorialButtons = document.querySelectorAll(
 const adminCategoryPopup = document.getElementById("admin-category-popup");
 
 const popupBackground = document.getElementById("popup-background");
+
+const adminLogoutForm = document.getElementById("admin-logout-form");
+logout(adminLogoutForm);
 
 popupBackground.addEventListener("click", (e) => {
   e.preventDefault();

@@ -1,5 +1,7 @@
 import canvas from "./canvas.js";
 import popup from "./popup.js";
+import disableNavigation from "./disableNavigation.js";
 
-canvas();
+disableNavigation();
+canvas("drawPage");
 popup();
