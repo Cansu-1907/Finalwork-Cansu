@@ -3,14 +3,16 @@ const tutorialController = require("../controllers/tutorial.controller");
 
 const tutorialRouter = express.Router();
 
-// GET category
+// GET all tutorials
 tutorialRouter.get("/tutorials", tutorialController.get);
-tutorialRouter.get("/tutorials/:courseId", tutorialController.getByCourseId);
 
-// POST category
-tutorialRouter.post("/tutorials/:courseId", tutorialController.post);
+// GET tutorials by categoryId
+tutorialRouter.get(
+  "/tutorials/category/:categoryId",
+  tutorialController.getTutorialsByCategoryId
+);
 
-// DELETE category
-tutorialRouter.delete("/tutorials/:id", tutorialController.del);
+// POST a new tutorial
+tutorialRouter.post("/tutorials", tutorialController.createTutorial);
 
 module.exports = tutorialRouter;

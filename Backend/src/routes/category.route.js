@@ -5,10 +5,12 @@ const categoryRouter = express.Router();
 
 // GET category
 categoryRouter.get("/categories", categoryController.get);
-categoryRouter.get("/mycategories", categoryController.getMyCategories);
 
 // POST category
 categoryRouter.post("/categories", categoryController.post);
+
+// UPDATE category
+categoryRouter.put("/categories/:id", categoryController.update);
 
 // DELETE category
 // categoryRouter.delete("/categories/:id", categoryController.del);

@@ -1,8 +1,10 @@
+import { getBackendBaseUrl, getFrontendBaseUrl } from "./utils.js";
+
 export default function logout(form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:4000/api/users/logout", {
+    fetch(`${getBackendBaseUrl()}/users/logout`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -15,7 +17,7 @@ export default function logout(form) {
       sessionStorage.removeItem("role");
       if (response.status == 200) {
         // alert("Successfully logged out");
-        window.location.href = "http://127.0.0.1:5500/pages/login.html";
+        window.location.href = `${getFrontendBaseUrl()}/pages/login.html`;
         return response.json();
       } else {
         alert("Something went wrong.");

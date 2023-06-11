@@ -1,7 +1,9 @@
 import logout from "./logout.js";
 import disableNavigation from "./disableNavigation.js";
+import { getBackendBaseUrl, getFrontendBaseUrl } from "./utils.js";
 
 disableNavigation();
+
 const form = document.getElementById("login-form");
 const logoutForm = document.getElementById("logout-form");
 const loggedUserH1 = document.getElementById("logged-user");
@@ -23,9 +25,8 @@ form.addEventListener("submit", (e) => {
     email: e.target.elements["login-email"].value,
     password: e.target.elements["login-password"].value,
   };
-  console.log(data);
 
-  fetch("http://localhost:4000/api/users/login", {
+  fetch(`${getBackendBaseUrl()}/users/login`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -48,10 +49,9 @@ form.addEventListener("submit", (e) => {
       sessionStorage.setItem("loggedUser", data.loggedUser);
       sessionStorage.setItem("role", data.role);
       if (data.role === "Admin") {
-        window.location.href =
-          "http://127.0.0.1:5500/admin/adminCategories.html";
+        window.location.href = `${getFrontendBaseUrl()}/admin/adminCategories.html`;
       } else {
-        window.location.href = "http://127.0.0.1:5500/";
+        window.location.href = getFrontendBaseUrl();
       }
     });
 });

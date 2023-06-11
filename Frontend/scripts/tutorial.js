@@ -10,3 +10,15 @@ if (isAuthenticated() && hasRole("User")) {
 
 canvas("tutorialPage");
 popup();
+
+const tutorialName = sessionStorage.getItem("pressedTutorialName");
+const tutorialVideo = sessionStorage.getItem("pressedTutorialVideo");
+const tutorialH1Container = document.getElementById("tutorial-h1-container");
+const tutorialVideoContainer = document.getElementById(
+  "tutorial-video-container"
+);
+
+tutorialH1Container.innerHTML = `<h1>${tutorialName}</h1>`;
+tutorialVideoContainer.innerHTML = `
+<iframe src="${tutorialVideo}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+`;

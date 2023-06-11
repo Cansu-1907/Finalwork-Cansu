@@ -22,31 +22,6 @@ async function get(req, res) {
 }
 
 /**
- * @param req - cookie
- * Get all categories from logged in user
- * @returns json object about the status of the request
- */
-
-async function getMyCategories(req, res) {
-  const loggedUser = sessions.get(req.cookies.sessionId);
-  const loggedUserId = loggedUser._id;
-
-  Category.find({
-    userId: { $in: [mongoose.Types.ObjectId(loggedUserId)] },
-  })
-    .then((results) => {
-      return res.json(results);
-    })
-    .catch((err) => {
-      return res.status(500).json({
-        success: false,
-        message: "Something went wrong",
-        error: err.message,
-      });
-    });
-}
-
-/**
  * Creates a new item and adds it to the database
  * @param req
  * {
@@ -112,9 +87,36 @@ async function post(req, res) {
 //   );
 // }
 
+async function update(req, res) {
+  const id = req.params.id;
+  const updatedName = req.body.categoryName;
+
+  Category.findByIdAndUpdate(id, { categoryName: updatedName }, { new: true })
+    .then((updatedCategory) => {
+      if (!updatedCategory) {
+        return res.status(404).json({
+          success: false,
+          message: "Category not found",
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Category updated successfully",
+        category: updatedCategory,
+      });
+    })
+    .catch((err) => {
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+        error: err.message,
+      });
+    });
+}
+
 module.exports = {
   get,
   post,
+  update,
   // del,
-  getMyCategories,
 };
