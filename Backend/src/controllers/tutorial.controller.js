@@ -58,8 +58,63 @@ async function createTutorial(req, res) {
   }
 }
 
+async function update(req, res) {
+  const id = req.params.id;
+  const updatedName = req.body.tutorialName;
+
+  Tutorial.findByIdAndUpdate(id, { tutorialName: updatedName }, { new: true })
+    .then((updatedTutorial) => {
+      if (!updatedTutorial) {
+        return res.status(404).json({
+          success: false,
+          message: "Tutorial not found",
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Tutorial updated successfully",
+        tutorial: updatedTutorial,
+      });
+    })
+    .catch((err) => {
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+        error: err.message,
+      });
+    });
+}
+
+async function remove(req, res) {
+  const id = req.params.id;
+
+  Tutorial.findByIdAndRemove(id)
+    .then((removedTutorial) => {
+      if (!removedTutorial) {
+        return res.status(404).json({
+          success: false,
+          message: "Tutorial not found",
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        message: "Tutorial deleted successfully",
+        tutorial: removedTutorial,
+      });
+    })
+    .catch((err) => {
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+        error: err.message,
+      });
+    });
+}
+
 module.exports = {
   get,
   getTutorialsByCategoryId,
   createTutorial,
+  update,
+  remove,
 };

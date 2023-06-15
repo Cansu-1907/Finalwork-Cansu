@@ -59,11 +59,11 @@ for (const category of categories) {
           <img src="${thumbnailUrl}" />
           <p>${tutorial.tutorialName}</p>
         <div class="admin-category-options">
-          <span class="material-icons ${tutorial.tutorialName} admin-edit-tutorial-buttons">
+          <span class="material-icons admin-edit-tutorial-buttons" data-tutorial-name="${tutorial.tutorialName}" data-tutorial-id="${tutorial._id}">
               edit
           </span>
           <hr />
-          <span class="material-icons ${tutorial.tutorialName} admin-delete-tutorial-buttons">
+          <span class="material-icons admin-delete-tutorial-buttons" data-tutorial-name="${tutorial.tutorialName}" data-tutorial-id="${tutorial._id}">
             delete
           </span>
         </div>
@@ -279,7 +279,7 @@ adminDeleteCategoryButtons.forEach((btn) => {
     });
     popupBackground.style.display = "block";
     adminCategoryPopup.innerHTML = `
-      <form class="form">
+      <form class="form" id="delete-category-form">
       <div>
         <h1 id="delete-h1">Delete category</h1>
         <p>${sessionStorage.getItem("pressedCategoryName")}</p>
@@ -290,6 +290,41 @@ adminDeleteCategoryButtons.forEach((btn) => {
       </div>
     </form>`;
     adminCategoryPopup.style.display = "block";
+
+    const deleteCategoryForm = document.getElementById("delete-category-form");
+    const cancelButton = deleteCategoryForm.querySelector(".cancel-button");
+
+    cancelButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      adminCategoryPopup.style.display = "none";
+      popupBackground.style.display = "none";
+    });
+
+    deleteCategoryForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const categoryId = sessionStorage.getItem("pressedCategoryId");
+
+      fetch(`${getBackendBaseUrl()}/categories/${categoryId}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            alert("Category deleted successfully.");
+            location.reload();
+          } else {
+            alert("Something went wrong.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
   });
 });
 
@@ -394,35 +429,85 @@ function readFileAsBase64(file) {
 adminEditTutorialButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
+    sessionStorage.setItem(
+      "adminPressedTutorialId",
+      e.target.dataset.tutorialId
+    );
+    sessionStorage.setItem(
+      "adminPressedTutorialName",
+      e.target.dataset.tutorialName
+    );
     adminCategoryOptionContainer.forEach((container) => {
       container.style.display = "none";
     });
     popupBackground.style.display = "block";
     adminCategoryPopup.innerHTML = `
-      <form class="form">
+      <form class="form" id="edit-tutorial-form">
       <div>
         <h1>Edit tutorial name</h1>
-        <p>${sessionStorage.getItem("pressedCategoryName")}</p>
+        <p>${sessionStorage.getItem("adminPressedTutorialName")}</p>
       </div>
-      <input type="text" placeholder="New tutorial name" required />
+      <input type="text" id="new-tutorial-name" placeholder="New tutorial name" required />
       <button type="input">Submit</button>
     </form>`;
     adminCategoryPopup.style.display = "block";
+
+    const editTutorialForm = document.getElementById("edit-tutorial-form");
+    editTutorialForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const tutorialId = sessionStorage.getItem("adminPressedTutorialId");
+      const newTutorialName =
+        document.getElementById("new-tutorial-name").value;
+
+      const data = {
+        tutorialName: newTutorialName,
+      };
+
+      fetch(`${getBackendBaseUrl()}/tutorials/${tutorialId}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            alert("Tutorial name updated successfully.");
+            location.reload();
+          } else {
+            alert("Something went wrong.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
   });
 });
 
 adminDeleteTutorialButtons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
+    sessionStorage.setItem(
+      "adminPressedTutorialId",
+      e.target.dataset.tutorialId
+    );
+    sessionStorage.setItem(
+      "adminPressedTutorialName",
+      e.target.dataset.tutorialName
+    );
     adminCategoryOptionContainer.forEach((container) => {
       container.style.display = "none";
     });
     popupBackground.style.display = "block";
     adminCategoryPopup.innerHTML = `
-        <form class="form">
+        <form class="form" id="delete-tutorial-form">
         <div>
           <h1 id="delete-h1">Delete tutorial</h1>
-          <p>${sessionStorage.getItem("pressedCategoryName")}</p>
+          <p>${sessionStorage.getItem("adminPressedTutorialName")}</p>
         </div>
         <div>
           <button class="cancel-button">Cancel</button>
@@ -430,5 +515,40 @@ adminDeleteTutorialButtons.forEach((btn) => {
         </div>
       </form>`;
     adminCategoryPopup.style.display = "block";
+
+    const deleteTutorialForm = document.getElementById("delete-tutorial-form");
+    const cancelButton = deleteTutorialForm.querySelector(".cancel-button");
+
+    cancelButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      adminCategoryPopup.style.display = "none";
+      popupBackground.style.display = "none";
+    });
+
+    deleteTutorialForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const tutorialId = sessionStorage.getItem("adminPressedTutorialId");
+
+      fetch(`${getBackendBaseUrl()}/tutorials/${tutorialId}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            alert("Tutorial deleted successfully.");
+            location.reload();
+          } else {
+            alert("Something went wrong.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
   });
 });

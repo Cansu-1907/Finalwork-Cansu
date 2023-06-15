@@ -15,4 +15,10 @@ tutorialRouter.get(
 // POST a new tutorial
 tutorialRouter.post("/tutorials", tutorialController.createTutorial);
 
+// UPDATE update tutorial name
+tutorialRouter.put("/tutorials/:id", tutorialController.update);
+
+// DELETE a tutorial
+tutorialRouter.delete("/tutorials/:id", tutorialController.remove);
+
 module.exports = tutorialRouter;

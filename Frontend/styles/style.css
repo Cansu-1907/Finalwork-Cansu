@@ -724,6 +724,9 @@ input:checked + .slider:before {
 
 .gallery-grid-item {
   border: 3px solid var(--color-dark-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .gallery-grid-item-img-container {

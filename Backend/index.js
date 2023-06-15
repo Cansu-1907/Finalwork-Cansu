@@ -12,6 +12,7 @@ global.sessions = new Map();
 const userRouter = require("./src/routes/user.route");
 const categoryRouter = require("./src/routes/category.route");
 const tutorialRouter = require("./src/routes/tutorial.route");
+const drawingRouter = require("./src/routes/drawing.route");
 
 // Import values that are stored in .env file (PORT, MONGODB_URI)
 const dotenv = require("dotenv").config();
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use("/api", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", tutorialRouter);
+app.use("/api", drawingRouter);
 
 app.listen(port, (err) => {
   if (err) {

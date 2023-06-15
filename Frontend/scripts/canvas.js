@@ -1,3 +1,5 @@
+import { getBackendBaseUrl } from "./utils.js";
+
 export default function canvas(usage) {
   // get canvas element and 2d context
   const canvas = document.getElementById("canvas");
@@ -152,26 +154,6 @@ export default function canvas(usage) {
       newCtx.drawImage(canvas, 0, 0);
       const image = newCanvas.toDataURL("image/jpeg");
       window.sessionStorage.setItem("drawing", image);
-
-      // send the image data to the backend server
-      // fetch("https://example.com/save-image", {
-      //   method: "POST",
-      //   body: JSON.stringify({ image }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      //   .then((response) => {
-      //     if (!response.ok) {
-      //       throw new Error("Failed to save image");
-      //     }
-      //     alert("Image saved successfully");
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //     alert("Failed to save image");
-      //   });
-      console.log(image);
     });
   }
 
@@ -183,6 +165,27 @@ export default function canvas(usage) {
       drawing: window.sessionStorage.getItem("drawing"),
     };
     console.log(data);
+
+    fetch(`${getBackendBaseUrl()}/drawing`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          alert("Congratulations! You saved your drawing to the gallery.");
+          location.reload();
+        } else {
+          alert("Something went wrong.");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("An error occurred. Please try again.");
+      });
   });
 
   // set up event listeners
