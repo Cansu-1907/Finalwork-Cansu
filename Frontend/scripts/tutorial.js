@@ -1,9 +1,28 @@
 import canvas from "./canvas.js";
 import popup from "./popup.js";
 import { isAuthenticated, hasRole } from "./authHelpers.js";
+import { getBackendBaseUrl } from "./utils.js";
 
 if (isAuthenticated() && hasRole("User")) {
   console.log("logged");
+  fetch(`${getBackendBaseUrl()}/user/stats/increment-tutorials-watched`, {
+    method: "PUT",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Tutorials watched incremented successfully!");
+      } else {
+        console.log("Something went wrong.");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      console.log("An error occurred. Please try again.");
+    });
 } else {
   window.location.href = "http://127.0.0.1:5500/pages/unauthorized.html";
 }

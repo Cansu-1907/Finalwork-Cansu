@@ -119,7 +119,8 @@ input::placeholder {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   background-color: #ececec;
   padding: 8px 10px;
   border: none;
@@ -1143,6 +1144,28 @@ select {
   background-color: #ececec;
   padding: 8px 10px;
   border: none;
+}
+
+#condition-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.condition {
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-start; */
+}
+
+.condition input[type="number"] {
+  width: auto;
+}
+
+.remove-condition-button {
+  background-color: var(--color-trophy-red);
+  padding: 10px 30px;
+  font-size: 18px;
 }
 
 /*      UNAUTHORIZED     */

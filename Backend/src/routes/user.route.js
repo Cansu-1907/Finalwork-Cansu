@@ -21,4 +21,18 @@ userRouter.post("/users/login", userController.login);
 // LOGOUT
 userRouter.get("/users/logout", userController.logout);
 
+// GET user stats
+userRouter.get("/user/stats", userController.getUserStats);
+
+// UPDATE user
+userRouter.put(
+  "/user/stats/increment-saved-to-device",
+  userController.incrementSavedToDevice
+);
+
+userRouter.put(
+  "/user/stats/increment-tutorials-watched",
+  userController.incrementTutorialsWatched
+);
+
 module.exports = userRouter;

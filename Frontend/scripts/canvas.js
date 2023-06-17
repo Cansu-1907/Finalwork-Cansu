@@ -131,6 +131,31 @@ export default function canvas(usage) {
 
         // Clean up by removing the temporary link element
         link.remove();
+
+        var loggedUser = sessionStorage.getItem("loggedUser");
+
+        if (loggedUser === null) {
+          return;
+        } else {
+          fetch(`${getBackendBaseUrl()}/user/stats/increment-saved-to-device`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => {
+              if (response.status === 200) {
+                console.log("Saved to device count incremented successfully!");
+              } else {
+                console.log("Something went wrong.");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              console.log("An error occurred. Please try again.");
+            });
+        }
       }
     });
   } else if (usage == "tutorialPage") {
@@ -160,6 +185,10 @@ export default function canvas(usage) {
   const drawingSaveForm = document.getElementById("drawing-save-form");
   drawingSaveForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const popupBackground = document.getElementById("popup-background");
+    const popup = document.getElementById("popup");
+
     let data = {
       drawingName: e.target.drawingName.value,
       drawing: window.sessionStorage.getItem("drawing"),
@@ -177,7 +206,9 @@ export default function canvas(usage) {
       .then((response) => {
         if (response.status === 201) {
           alert("Congratulations! You saved your drawing to the gallery.");
-          location.reload();
+          popupBackground.style.display = "none";
+          popup.style.display = "none";
+          // location.reload();
         } else {
           alert("Something went wrong.");
         }

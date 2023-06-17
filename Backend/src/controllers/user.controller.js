@@ -170,6 +170,89 @@ async function logout(req, res) {
   return res.status(200).send("Successfully logged out");
 }
 
+async function getUserStats(req, res) {
+  const loggedUser = sessions.get(req.cookies.sessionId);
+
+  User.findOne(
+    { _id: loggedUser },
+    "savedToGallery savedToDevice tutorialsWatched"
+  )
+    .exec()
+    .then((userData) => {
+      if (!userData) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+
+      return res.json(userData);
+    })
+    .catch((err) => {
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong",
+        error: err.message,
+      });
+    });
+}
+
+async function incrementSavedToDevice(req, res) {
+  const loggedUser = sessions.get(req.cookies.sessionId);
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      loggedUser._id,
+      { $inc: { savedToDevice: 1 } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+}
+
+async function incrementTutorialsWatched(req, res) {
+  const loggedUser = sessions.get(req.cookies.sessionId);
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      loggedUser._id,
+      { $inc: { tutorialsWatched: 1 } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   get,
   post,
@@ -177,4 +260,7 @@ module.exports = {
   del,
   login,
   logout,
+  getUserStats,
+  incrementSavedToDevice,
+  incrementTutorialsWatched,
 };

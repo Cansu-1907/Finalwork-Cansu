@@ -36,7 +36,6 @@ form.addEventListener("submit", (e) => {
     body: JSON.stringify(data),
   })
     .then((response) => {
-      console.log(response);
       if (response.status == 401) {
         alert("Invalid email or password.");
       } else if (response.status == 200) {

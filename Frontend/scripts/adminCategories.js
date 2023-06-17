@@ -53,7 +53,6 @@ for (const category of categories) {
       type: "image/png",
     });
     const thumbnailUrl = URL.createObjectURL(thumbnailBlob);
-    console.log(tutorial.videoUrl);
     categoryItemsString += `
       <div class="category-item">
           <img src="${thumbnailUrl}" />

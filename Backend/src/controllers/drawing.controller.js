@@ -1,4 +1,5 @@
 const Drawing = require("../models/drawing.model");
+const User = require("../models/user.model");
 
 async function createDrawing(req, res) {
   const { drawingName, drawing } = req.body;
@@ -14,6 +15,11 @@ async function createDrawing(req, res) {
     });
 
     const savedDrawing = await newDrawing.save();
+
+    await User.findByIdAndUpdate(loggedUser._id, {
+      $inc: { savedToGallery: 1 },
+    });
+
     return res.status(201).json(savedDrawing);
   } catch (error) {
     console.log(error);

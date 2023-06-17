@@ -13,6 +13,18 @@ const userSchema = new Schema({
     enum: ["User", "Admin"],
     default: "User",
   },
+  savedToGallery: {
+    type: Number,
+    default: 0,
+  },
+  savedToDevice: {
+    type: Number,
+    default: 0,
+  },
+  tutorialsWatched: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);
