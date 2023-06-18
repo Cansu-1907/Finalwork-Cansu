@@ -25,7 +25,9 @@ const db = require("./src/configs/db");
 const port = process.env.PORT || 4000;
 
 // Middleware
-app.use(cors({ credentials: true, origin: "http://127.0.0.1:5500" }));
+app.use(
+  cors({ credentials: true, origin: "https://draw-it-frontend.onrender.com" })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
