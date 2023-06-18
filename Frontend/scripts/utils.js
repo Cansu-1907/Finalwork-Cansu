@@ -1,7 +1,7 @@
 export function getFrontendBaseUrl() {
-  return "http://127.0.0.1:5500";
+  return "https://draw-it-frontend.onrender.com";
 }
 
 export function getBackendBaseUrl() {
-  return "http://localhost:4000/api";
+  return "https://draw-it-gv9l.onrender.com/api";
 }
